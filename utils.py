@@ -1,4 +1,5 @@
 import requests
+from colorthief import ColorThief
 
 def save_img(pic_url, img_name):
     try:
@@ -18,3 +19,24 @@ def save_img(pic_url, img_name):
         print(f"The error {str(e)} ocurred while saving the image")
         return 600
     return response.status_code
+
+def create_dict (num):
+  result = {"link_to_img":[], "img_name":[]}
+#   for i in range(0, num):
+#     result[f"red_{str(i)}"] = []
+#     result[f"green_{str(i)}"] = []
+#     result[f"blue_{str(i)}"] = []
+#   result["label"] = []
+  return result
+
+#function to transform an image img to an array of the rgb representation of the first num more important colors
+def img_to_colors(img, num):
+    color_thief = ColorThief(img)
+    palette = color_thief.get_palette(color_count= num, quality = 1)
+    result = []
+    for i in range(0, num):
+        color = palette[i]
+        result.append(color[0])
+        result.append(color[1])
+        result.append(color[2])
+    return result
