@@ -81,7 +81,7 @@ for new_link in src_list:
         time.sleep(random.uniform(0.1, 1))
         continue
     data_dict['link_to_img'].append(new_link)
-    data_dict["img_name"].append(img_name)
+    data_dict["img_name"].append(f"img_{id_num}.jpg")
     id_num+=1
     time.sleep(random.uniform(0.1, 1))
     
