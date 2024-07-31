@@ -8,7 +8,7 @@ columns = data.columns.tolist()
 if "label" not in columns:
     data["label"] = ""
     
-emotion_list = ["sadness", "joy", "nostalgy", "dread", "anxiety"]
+emotion_list = ["sadness", "joy", "trust", "fear", "surprise", "disgust", "anger", "anticipation"]
 pattern = re.compile(r'^(' + '|'.join(emotion_list) + r')(-(' + '|'.join(emotion_list) + '))*$')
 previous_col = data['label'].tolist()
 
@@ -25,7 +25,7 @@ for index, row in data.iterrows():
             image.show()
             print("Write the emotions that this image transmit to you separated by hyphens, the emotions that you can choose are: \n")
             for em in emotion_list:
-                print(f"- {em}\n")
+                print(f"- {em}")
             emotions = input("Your input: \n")
             if pattern.match(emotions):
                 # save the emotions
